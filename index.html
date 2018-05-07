@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery.js"></script>
+</head>
+
+<body>
+    <div>
+        <h1>The Psychic Game</h1>
+    </div>
+
+    <div>
+        <h4>Guess what letter I'm thinking of</h4>
+    </div>
+
+    <div id=wins>
+        <h4>Wins:</h4>
+    </div>
+
+    <div id=losses>
+        <h4>Losses:</h4>
+    </div>
+
+    <div id=guessesLeft>
+        <h4>Guesses Left:</h4>
+    </div>
+
+    <div id=guessesSoFar>
+        <h4>Your Guesses so far:</h4>
+    </div>
+
+
+    <script>
+        var computerChoices = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
+
+        var wins = 0;
+        var losses = 0
+        var guessesLeft = 10
+        var guessesSoFar = 0;
+
+        var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+
+        var reset = function() {
+            guessesLeft = 10;
+            guessesSoFar = 0;
+
+        }
+
+        //missing function to start the game 
+        //missing function to update guessesSoFar with the letters guessed
+        //missing function to end the game after 10 guesses
+        //
+
+        
+        document.onkeyup = function (event) {
+            var userInput = event.key;
+            console.log(event.key)
+            if (userInput === computerGuess) {
+                wins++;
+                document.querySelector("#wins").innerHTML = "Wins: " + wins;
+                alert("You win!!!")
+                reset
+            }
+        }
+
+        //this block will automatically end the game with one wrong guess, needs to be wrongguesses>10 lose
+        document.onkeyup = function (event) {
+            var userInput = event.key;
+            console.log(event.key)
+            if (userInput !== computerGuess) {
+                losses++;
+                document.querySelector("#losses").innerHTML = "Losses: " + losses;
+                alert("You lose!!!")
+                reset
+            }
+        }
+        
+        
+
+    </script>
+
+
+</body>
+
+</html>
